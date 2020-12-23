@@ -1,0 +1,98 @@
+{% load static %}
+{% load slideshow %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- head -->
+    <meta charset="utf-8">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Autoplay usage demo">
+    <meta name="author" content="David Deutsch">
+    <title>
+      Django | Owl Carousel
+    </title>
+
+    <!-- Stylesheets -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,300italic' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'SlideShow/css/docs.theme.min.css' %}">
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="{% static 'SlideShow/owlcarousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'SlideShow/owlcarousel/assets/owl.theme.default.min.css' %}">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Yeah i know js should not be in header. Its required for demos.-->
+
+    <!-- javascript -->
+    <script src="{% static 'SlideShow/vendors/jquery.min.js' %}"></script>
+    <script src="{% static 'SlideShow/owlcarousel/owl.carousel.js' %}"></script>
+  </head>
+  <body>
+
+    <!-- header -->
+    <header class="header">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="brand left">
+            <h3>
+              <a style="line-height: 38px" href="/OwlCarousel2/">Django and owl.carousel.js</a> 
+            </h3>
+          </div>
+          <div class="brand right">
+            <h3>
+              {% if user.is_authenticated %}
+                <span style="line-height: 38px">Welcome {{user.username}}, <a href="{% url 'logout' %}?next={{request.path}}" style="color: red">Logout</a></span>
+              {% else %}
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger">Login/Signup with Google</a>
+              {% endif %}
+            </h3>
+          </div>
+          <a id="toggle-nav" class="right">
+            <span></span> <span></span> <span></span> 
+          </a> 
+        </div>
+      </div>
+    </header>
+
+    <!-- title -->
+    <section class="title">
+      <div class="row">
+        <div class="large-12 columns">
+          <h1>Articles</h1>
+        </div>
+      </div>
+    </section>
+
+    {% slideshow %}
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="row">
+        <div class="large-12 columns">
+          <h5>
+            <a id="custom-tweet-button" href="https://twitter.com/MehranTarif" target="_blank"></a> 
+            <a href="https://youtube.com/silicium7">Mehran Tarif</a> 
+          </h5>
+        </div>
+      </div>
+    </footer>
+
+    <!-- vendors -->
+    <script src="{% static 'SlideShow/vendors/highlight.js' %}"></script>
+    <script src="{% static 'SlideShow/js/app.js' %}"></script>
+  </body>
+</html>

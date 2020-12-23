@@ -1,0 +1,36 @@
+    <!--  Demos -->
+    <section id="demos">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="owl-carousel owl-theme">
+            {% for slide in slides %}
+              <div class="item">
+                <h4><img src="{{slide.article.image.url}}" alt="{{slide.article.title}}"></h4>
+                <p>{{slide.article.title}}</p>
+              </div>
+            {% endfor %}
+          </div>
+          <a class="button secondary play">Play</a> 
+          <a class="button secondary stop">Stop</a> 
+          <script>
+            $(document).ready(function() {
+              var owl = $('.owl-carousel');
+              owl.owlCarousel({
+                items: 4,
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                autoplayTimeout: 1000,
+                autoplayHoverPause: true
+              });
+              $('.play').on('click', function() {
+                owl.trigger('play.owl.autoplay', [1000])
+              })
+              $('.stop').on('click', function() {
+                owl.trigger('stop.owl.autoplay')
+              })
+            })
+          </script>
+        </div>
+      </div>
+    </section>
