@@ -1,4 +1,4 @@
-# Django-OwlCarousel
+# Django-Google-Login
 
 ```virtualenv .venv
 source .venv/bin/activate
